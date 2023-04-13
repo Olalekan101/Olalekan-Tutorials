@@ -1,5 +1,4 @@
-import { redhatmon } from './font'
-import { sono } from './font'
+
 import MainBody from './MainBody/page'
 
 export default function Home() {

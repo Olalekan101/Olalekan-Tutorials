@@ -1,8 +1,5 @@
 "use client"
 import Link from "next/link";
-import Navlinks from "./NavLinks";
-import Hambuger from "./Hambuger";
-import {GiFootprint} from "react-icons/gi"
 import { useSelectedLayoutSegments,useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { usePathname } from "next/navigation";
 

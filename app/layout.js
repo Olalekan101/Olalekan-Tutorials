@@ -4,16 +4,11 @@ import './globals.css'
 import Navbar from './Navbar/page'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from "react-query/devtools"
-import { sono } from 'next/font/google';
 import { Roboto_Mono } from "next/font/google"
 import Footer from './Footer/page'
 import TerminologyProvider from '@/lib/ContextApi/TerminologyContex'
 import CheckBoxContext from './ContextAPI/CheckBoxContext'
 
-// export const sono = Sono({
-//   subsets: ['latin'],
-//   display: 'swap',
-// });
 
 const robo = Roboto_Mono({
   subsets: ['latin'],
