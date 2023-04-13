@@ -1,0 +1,23 @@
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499 498">
+  <g id="Curve">
+    <g opacity=".25">
+      <line x1="10" y1="65" x2="491" y2="65" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="10" y1="126.33" x2="491" y2="126.33" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="10" y1="187.67" x2="491" y2="187.67" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="10" y1="249" x2="491" y2="249" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="10" y1="310.33" x2="491" y2="310.33" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="10" y1="371.67" x2="491" y2="371.67" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="10" y1="433" x2="491" y2="433" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+    </g>
+    <g opacity=".25">
+      <line x1="74.64" y1="484.69" x2="74.64" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="133.31" y1="484.69" x2="133.31" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="191.98" y1="484.69" x2="191.98" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="250.64" y1="484.69" x2="250.64" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="309.31" y1="484.69" x2="309.31" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="367.98" y1="484.69" x2="367.98" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+      <line x1="426.64" y1="484.69" x2="426.64" y2="13.31" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="5"/>
+    </g>
+    <path d="m6,492s180-19,230.55-222.67C280,84,339,31,493,6" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="12"/>
+  </g>
+</svg>

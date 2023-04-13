@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+@layer components{
+  .input{
+    @apply border-0 focus:ring-slate-500 focus:ring-1 bg-slate-200 rounded-md
+  } 
+  .btnform{
+    @apply bg-slate-100 border-slate-500 place-self-start p-2
+  }
+  .bgText{
+    @apply text-lightColor bg-[#16213E]
+  }
+  .gridsetup{
+    @apply grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 px-2 sm:px-0  w-full
+  }
+  .navlink{
+    @apply border-2 border-slate-500/50 p-2 rounded-md hover:bg-green-500 transition-colors duration-200 delay-100
+  }
+  .btnStyle{
+    @apply  hover:bg-green-400 bg-green-500 transition-colors duration-200 delay-100 p-2 sm:p-4 text-sm sm:text-base sm:font-bold rounded-md
+  }
+  .iconStyle{
+    @apply absolute object-cover w-full h-full inset-0
+  }
+  .iconStyle2{
+    @apply text-[100px]
+  }
+}

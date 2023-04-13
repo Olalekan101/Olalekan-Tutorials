@@ -1,0 +1,15 @@
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 437">
+  <g id="Playhead">
+    <g opacity=".5">
+      <rect x="45" y="237" width="72" height="72" rx="6.47" ry="6.47" fill="#22c55e"/>
+      <rect x="22" y="327" width="46" height="46" rx="4.14" ry="4.14" fill="#22c55e"/>
+      <rect x="174" y="237" width="46" height="46" rx="4.14" ry="4.14" fill="#22c55e"/>
+      <rect x="144" y="300" width="312" height="72" rx="13.48" ry="13.48" fill="#22c55e"/>
+      <rect x="286.33" y="237" width="199.33" height="46" rx="8.61" ry="8.61" fill="#22c55e"/>
+      <line x1="500" y1="391" y2="391" fill="none" stroke="#22c55e" stroke-miterlimit="10" stroke-width="3"/>
+      <line y1="220" x2="500" y2="220" fill="none" stroke="#22c55e" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+    <path d="m253,138h-6v296c0,1.66,1.34,3,3,3s3-1.34,3-3V138h0Z" fill="#f2f2f2"/>
+    <path d="m285.05,140h-70.1c-8.05,0-14.91-5.83-16.22-13.77l-18.64-113.06c-.06-.39-.1-.78-.08-1.17.31-6.68,5.82-12,12.57-12h114.82c6.75,0,12.27,5.32,12.57,12,.02.39-.02.79-.08,1.17l-18.64,113.06c-1.31,7.94-8.17,13.77-16.22,13.77Z" fill="#22c55e"/>
+  </g>
+</svg>
