@@ -5,7 +5,7 @@ import Navbar from './Navbar/page'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from "react-query/devtools"
 import { Roboto_Mono } from "next/font/google"
-import Footer from './footer/page'
+import Footer from './Footer/page'
 import CheckBoxContext from './ContextAPI/CheckBoxContext'
 import AuthenticationProvider from './ContextAPI/auth-context'
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <QueryClientProvider client={queryClient}>
         <AuthenticationProvider>
         <CheckBoxContext>
-      <Navbar/>
+        <Navbar/>
         {children}
         <Footer/>
         </CheckBoxContext>
