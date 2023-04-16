@@ -1,5 +1,4 @@
 import BackButton from "../Components/BackButton"
-import { Metadata } from "next"
 
 export const metadata = {
   title: "Motion Graphic Courses",

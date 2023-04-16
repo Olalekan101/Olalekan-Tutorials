@@ -25,7 +25,7 @@ const Navbar = () => {
                 <li className="">{urlValue.length === 0 ?<button ><a href="#questions">Questions</a></button>: <button 
                 className={`${question ? "font-bold underline underline-offset-1 text-green-500" : "font-thin "}`}
                 onClick={()=>pushUrl.push("/MainBody/questionsection")}>Questions</button> } </li>
-                <li className={`${course ? "font-bold underline underline-offset-1 text-green-500" : "font-thin "}`}> <Link href='/course' >Course</Link> </li>
+                <li className={`${course ? "font-bold underline underline-offset-1 text-green-500" : "font-thin "}`}> <Link href='/Course' >Course</Link> </li>
             </ul>
             <div className={`text-sm ${user ? 'text-red-500' : 'text-green-500'}`}>
                 {user && !loading ? <button onClick={()=>logout()} ><FiLogOut/></button> : <button onClick={()=>googlesignin()} ><FiLogIn/></button> }
