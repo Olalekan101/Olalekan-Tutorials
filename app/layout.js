@@ -15,12 +15,7 @@ const robo = Roboto_Mono({
 })
 
 const queryClient = new QueryClient()
-// export const revalidate = 0
 
-export const metadata = {
-  title: 'Olalekan Tutorials',
-  description: 'Welcome to olalekan repository',
-}
 
 export default function RootLayout({ children }) {
   return (
