@@ -1,5 +1,9 @@
-import { Button } from "../Components/Button"
 import BackButton from "../Components/BackButton"
+import { Metadata } from "next"
+
+export const metadata = {
+  title: "Motion Graphic Courses",
+}
 
 export default function Course() {
   return (

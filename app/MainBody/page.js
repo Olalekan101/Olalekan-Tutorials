@@ -1,7 +1,6 @@
 import HeroSection from "./Herosection/page";
 import Terminology from "./Terminology/page";
-import QuestionSection from "./question-section/page";
-import TextAnimationAcross from "../Components/TextAnimation/TextAnimationAcross";
+import QuestionSection from "./questionsection/page";
 
 const MainBody = () => {
     return ( 

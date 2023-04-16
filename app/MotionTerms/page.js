@@ -1,26 +1,38 @@
 "use client"
 
-import TermsComponent from "../Components/TermsComponents"
-import MotionTerminology from "../DataQuery/MotionTerminology/page"
 import Link from "next/link"
-import {BiArrowBack} from "react-icons/bi"
 import { useState, useDeferredValue, useCallback,useMemo, useEffect } from "react"
-import { Button } from "@/app/Components/Button";
 import { useContext } from "react"
 import { ReadTerms } from "../ContextAPI/CheckBoxContext"
-import { useRouter } from "next/navigation"
 import ComfirmDialog from "../Components/ComfirmDialog"
+import {LoadingPlane} from "../../lib/Lottie/index"
+import Lottie from "lottie-react";
+
+import MotionIcons from "../Components/MotionIcons"
+import {ImCheckboxChecked} from "react-icons/im"
+import {ImCheckboxUnchecked} from "react-icons/im"
+import { useQuery } from "react-query";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+
+const TermCache = async()=>{
+  return await getDocs(collection(db, "Motion Graphics Term"));
+}
 
 
 export default function MotionTermsPage() {
-    const {data, isLoading,isError} = MotionTerminology()
-    const [input, setInput] = useState('')
-    const deValue = useDeferredValue(input)
-    const {removeFunction,readFunction,read} = useContext(ReadTerms)
-    const router  = useRouter();
-    const localLength = read.length
-    const [confirm, setConfirm] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
+  
+  const [input, setInput] = useState('')
+  const deValue = useDeferredValue(input)
+  const {readFunction,read} = useContext(ReadTerms)
+  const [isOpen, setIsOpen] = useState(false)
+  const TermsIDs =[]
+  
+  const {data, isLoading,isError} = useQuery("MotionData", TermCache,{
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: 300000
+  })
 
     const handleIsOpen = ()=>{
       setIsOpen(!isOpen)
@@ -36,22 +48,28 @@ export default function MotionTermsPage() {
     }
     const Terms = useMemo(()=>data?.docs.map((x)=>{
       return{
+        ID: x.id,
         ...x.data()
       }
     }),[data])
+    
+
     const filterTerm = Terms?.filter( (x) => x.Terminology.toLowerCase().includes(deValue.toLowerCase()))
     const ran = useMemo(()=>Math.floor(Math.random() * (Terms?.length - 1 + 1) + 1 ),[Terms])
-  
+    const populateID = Terms?.forEach(x=>TermsIDs.push(x.id))
+    console.log(TermsIDs);
     if(isLoading){
-      return <div>Loading...</div>
+      return <Lottie animationData={LoadingPlane} loop={true} />
     }
     if(isError){
       return <div>Sorry Something Want Wrong</div>
     }
+
+    const check = read.includes(TermsIDs)
+
   return (
     <>
       {ComfirmDialog(isOpen,handleIsOpen)}
-      {/* <Link href={"/"}><BiArrowBack className="text-xl opacity-50"/></Link> */}
       <section className="mb-6 mt-2 flex gap-2 align-middle">
         <div>
           <p className="font-extrabold text-3xl sm:text-5xl opacity-50" >Concept that you<br/> need to understand</p>
@@ -67,7 +85,26 @@ export default function MotionTermsPage() {
       </section>
       <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 px-2 sm:px-0  w-full">
       {filterTerm?.map(term=>(
-        TermsComponent(term)
+        <div key={term.ID}>
+      <Link href={`/MainBody/Terminology/${term.id}`} className="terms" onClick={()=>readFunction(term.id)}  >
+      <div className=" relative bg-darkColor2 rounded-md hover:scale-105 transition-all duration-150 delay-75 ease-in-out "
+      >
+        <div className="absolute right-0 top-0 p-2 text-sm text-green-500 opacity-50" >
+        {check ? <ImCheckboxChecked/> : <ImCheckboxUnchecked/> }
+        </div>
+        <div className=" flex flex-col items-center p-2" >
+        <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
+      {MotionIcons(term.Terminology,'iconStyle')}  
+          </div>
+          <div className="font-bold text-center overflow-x-hidden text-ellipsis text-sm sm:text-base whitespace-nowrap">{term.Terminology}
+          </div>
+          <div className="line-clamp-2 text-sm text-center">
+            {term.Explanation}
+          </div>
+        </div>
+      </div>
+    </Link>
+  </div>
       ))}
       </section>
       { filterTerm?.length === 0 ? <div className="w-full flex justify-center flex-col items-center" >

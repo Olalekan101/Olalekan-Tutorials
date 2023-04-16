@@ -68,7 +68,7 @@ export default function MotionIcons(name,style){
     const filter = Icons.filter(x=>x.name === name ) 
     return <>
         {filter.map(x=>(
-            <>{x.src(style)}</>
+            <><div key={x.name} >{x.src(style)}</div></>
         ))}
     </>
 }

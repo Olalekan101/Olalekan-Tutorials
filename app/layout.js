@@ -5,10 +5,9 @@ import Navbar from './Navbar/page'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from "react-query/devtools"
 import { Roboto_Mono } from "next/font/google"
-import Footer from './Footer/page'
-import TerminologyProvider from '@/lib/ContextApi/TerminologyContex'
+import Footer from './footer/page'
 import CheckBoxContext from './ContextAPI/CheckBoxContext'
-
+import AuthenticationProvider from './ContextAPI/auth-context'
 
 const robo = Roboto_Mono({
   subsets: ['latin'],
@@ -28,11 +27,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className={robo.className} >
       <body className={` bgText flex flex-col min-h-screen p-2 sm:p-6 `}>
       <QueryClientProvider client={queryClient}>
+        <AuthenticationProvider>
         <CheckBoxContext>
       <Navbar/>
         {children}
         <Footer/>
         </CheckBoxContext>
+        </AuthenticationProvider>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right"/>
       </QueryClientProvider>
         </body>

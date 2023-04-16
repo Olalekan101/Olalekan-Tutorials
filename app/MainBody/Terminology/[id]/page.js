@@ -1,80 +1,63 @@
 "use client"
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { useQuery,useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
-import MotionTerminology from "@/app/DataQuery/MotionTerminology/page";
 import TermsComponent from "@/app/Components/TermsComponents";
 import { useRouter } from 'next/navigation';
-import Rive from "rive-react";
-import RiveComponents from "@/app/Components/RiveComponents/page";
 import MotionIcons from "@/app/Components/MotionIcons";
 import { useContext } from "react";
 import {ReadTerms} from "@/app/ContextAPI/CheckBoxContext";
+import { AuthContext } from "@/app/ContextAPI/auth-context";
+import {LoadingPlane} from "../../../../lib/Lottie/index"
+import Lottie from "lottie-react";
+import { useState,useMemo } from "react";
 
 
 async function GetDoc (id){
   return await getDocs(query(collection(db, "Motion Graphics Term"), where("id", "==", id)))
 }
 
-export function generateStaticParams() {
-  const Static = useQuery("staticprams", getDocs(collection(db, "Motion Graphics Term")))
-  const StaticId = Static.data?.docs.map(x=>{
-    return{
-      ...x.data()
-    }
-  })
-  return StaticId?.foreach(x=>{
-   id: x.id
-  })
+const TermCache = async()=>{
+  return await getDocs(collection(db, "Motion Graphics Term"));
 }
+
 
 export default function FurtherEx({params: params}) {
   const router = useRouter()
   const QueryId = params.id
-  const QueryIni = useQueryClient()
-
+  const {user} = useContext(AuthContext)
   const {readFunction} = useContext(ReadTerms)
+
+  const {data, isLoading,isError} = useQuery("MotionData", TermCache,{
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: 300000
+  })
+
+  const Terms = useMemo(()=>data?.docs.map((x)=>{
+    return{
+      ID: x.id,
+      ...x.data()
+    }
+  }),[data])
+
+  const TermData = useMemo(()=>data?.docs.map((d)=>{
+    return{
+      ...d.data()
+    }
+  }),[data])
 
     const QuerySnap = useQuery(["SingleQuery",QueryId], ()=>GetDoc(+QueryId),{
       refetchOnMount:false,
       refetchOnWindowFocus:false,
-      refetchIntervalInBackground:false,
-      initialData: ()=>{
-        const queryInitial = QueryIni.getQueryData("MotionData")?.data?.docs.map(x=>{
-          return {
-            ...x.data()
-          }
-        })
-        const Maindata = queryInitial?.find(x=>parseInt(x.id) === parseInt(QueryId))
-        if(Maindata){
-          return{ QuerySnap: Maindata}
-        } 
-          else { return undefined }
-       
-      }
-    } )
+      refetchIntervalInBackground:false} )
 
-    const MotionQuery = MotionTerminology()
-
-    const MotionData = MotionQuery.data?.docs.map(doc=>{
-      return{
-        ...doc.data()
-      }
-    })
-
-    const filterData = MotionData?.filter(x=>parseInt(x.id) !== parseInt(QueryId))
     
     if(QuerySnap.isLoading){
-      return (
-     <div className="w-full sm:w-[50%] mx-auto px-2 h-screen" >
-      <div className="w-full h-[35%] bg-darkColor2 animate-pulse rounded-sm" />
-      <div className="w-full h-[20%] bg-darkColor2 animate-pulse rounded-sm mt-5" />
-      <div className="w-full h-[35%] bg-darkColor2 animate-pulse rounded-sm mt-10" />
-     </div>
-      )
+      return <Lottie animationData={LoadingPlane}  loop={true} />
     }
     
     const getdata = QuerySnap.data?.docs.map((dat)=>{
@@ -82,7 +65,12 @@ export default function FurtherEx({params: params}) {
         ...dat.data()
       }
     })
+    
 
+    const filteredData = Terms?.filter(x=>{
+      return parseInt(x.id) !== parseInt(QueryId)
+    })
+    
   return (
     <>
    <section className="flex flex-col sm:flex-row">
@@ -96,11 +84,11 @@ export default function FurtherEx({params: params}) {
           <button className=" text-xl hover:text-green-700 " onClick={()=>router.back()}>
           <BiArrowBack/>
           </button>
-          <Link href={`/MainBody/Terminology/${dat.id}/${dat.Terminology}`}>
+          { user ? <Link href={`/MainBody/Terminology/${dat.id}/${dat.Terminology}`}>
           <button className=" text-xl hover:text-green-700 ">
           <FiEdit/>
           </button>
-          </Link>
+          </Link> : "🆓"}
           </div>
           </div>
         )
@@ -118,7 +106,7 @@ export default function FurtherEx({params: params}) {
       </div>
    </section>
    <div className="gridsetup pt-5">
-    {filterData.map(filtered=>(
+    {filteredData.map(filtered=>(
       <div key={filtered.id} onClick={()=>readFunction(filtered.id)}>
         {TermsComponent(filtered)}
       </div>

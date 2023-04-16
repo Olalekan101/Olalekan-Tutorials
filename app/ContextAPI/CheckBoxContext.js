@@ -2,13 +2,15 @@
 
 import { createContext, useState, useEffect } from "react"
 
-const ReadMotion = {
+const readMotion = {
     read: []
 }
 
 const handleCheck = ()=>{
-    const check = localStorage.getItem('read')
-    return check ? JSON.parse(check) : ReadMotion
+        if( typeof window !== 'undefined'){
+            const check = localStorage?.getItem("read");
+            return check ? JSON.parse(check) : readMotion;
+        }
 }
 
 export const ReadTerms = createContext({

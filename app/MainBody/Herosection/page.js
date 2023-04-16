@@ -2,26 +2,14 @@
 import Lottie from "lottie-react";
 import CurveAnimation from "@/lib/Lottie/CurveAnimation"
 import { Button } from "@/app/Components/Button";
-import { useState, useEffect } from 'react';
+
 
 
 
 const HeroSection = () => {
 
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  // const [windowSize, setWindowSize] = useState(window.innerWidth);
 
-
-  // useEffect(() => {
-  //   const handleWindowResize = () => {
-  //     setWindowSize(window.innerWidth);
-  //   };
-
-  //   window.addEventListener('resize', handleWindowResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleWindowResize);
-  //   };
-  // },[windowSize]);
     return ( 
         <>
         <header className="w-full flex flex-col mb-2 sm:mb-6 ">

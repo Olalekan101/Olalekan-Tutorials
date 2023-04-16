@@ -2,15 +2,17 @@
 import { Dialog,Transition } from "@headlessui/react"
 import { useRef, useState, useContext, useMemo, Fragment} from "react"
 import { ReadTerms } from "../ContextAPI/CheckBoxContext"
+import { useRouter } from "next/navigation"
 
 export default function ComfirmDialog(isOpen,closeModal) {
         const {removeFunction} = useContext(ReadTerms)
-        // const activeBtn = useMemo(()=>{
-        //     useRef(null)
-        // },[])
-        const handleClose = ()=>{
-            Modal(),
-            removeFunction()
+        const router = useRouter()
+        const windowRefresh =()=>{
+          window.location.reload()
+        }
+        const handleRefresh=()=>{
+          removeFunction();
+          windowRefresh();
         }
 
       return (
@@ -55,17 +57,14 @@ export default function ComfirmDialog(isOpen,closeModal) {
                         <button
                           type="button"
                           className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                          onClick={()=>{
-                            handleClose()
-                          }}
+                          onClick={handleRefresh}
                         >
-                          Yes, Reset
+                          <p onClick={closeModal} >Yes, Reset</p>
                         </button>
                         <button
                           type="button"
                           className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                           onClick={closeModal}
-                          
                         >
                           Back
                         </button>
