@@ -30,7 +30,9 @@ export default function FurtherEx({params: params}) {
   const QueryId = params.id
   const {user} = useContext(AuthContext)
   const {readFunction} = useContext(ReadTerms)
-
+  const admin2 = process.env.NEXT_PUBLIC_ADMIN_ID
+  const admin3 = process.env.SECRET_ADMIN_ID
+  
   const {data, isLoading,isError} = useQuery("MotionData", TermCache,{
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -70,7 +72,7 @@ export default function FurtherEx({params: params}) {
     const filteredData = Terms?.filter(x=>{
       return parseInt(x.id) !== parseInt(QueryId)
     })
-    
+
   return (
     <>
    <section className="flex flex-col sm:flex-row">
@@ -84,7 +86,7 @@ export default function FurtherEx({params: params}) {
           <button className=" text-xl hover:text-green-700 " onClick={()=>router.back()}>
           <BiArrowBack/>
           </button>
-          { user ? <Link href={`/MainBody/Terminology/${dat.id}/${dat.Terminology}`}>
+          { user?.uid === admin2 ? <Link href={`/MainBody/Terminology/${dat.id}/${dat.Terminology}`}>
           <button className=" text-xl hover:text-green-700 ">
           <FiEdit/>
           </button>

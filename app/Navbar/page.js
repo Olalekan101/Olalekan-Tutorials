@@ -20,7 +20,7 @@ const Navbar = () => {
     return ( 
 <nav className=" sticky backdrop-blur-sm bg-darkColor/80 top-0 inset-0 z-10 flex gap-2 justify-between items-center mx-auto px-2 py-2 w-full">
             <Link href={"/"}><h1 className="opacity-50 text-xs sm:text-base text-center">Olalekan<br className="block sm:hidden "/> Tutorials</h1></Link>
-            <div>
+            <div className="flex gap-2">
             <ul className="flex gap-2 flex-end text-xs sm:text-sm">
                 <li className="">{urlValue.length === 0 ?<button ><a href="#questions">Questions</a></button>: <button 
                 className={`${question ? "font-bold underline underline-offset-1 text-green-500" : "font-thin "}`}

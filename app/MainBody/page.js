@@ -4,7 +4,7 @@ import QuestionSection from "./questionsection/page";
 
 const MainBody = () => {
     return ( 
-        <main className="flex flex-col items-center w-full mt-[30px] overflow-clip">
+        <main className="flex flex-col items-center w-full mt-[30px] ">
             {/* <img src={Anchorpoint} alt="Mask icon"/> */}
             <HeroSection/>
             <Terminology/>
