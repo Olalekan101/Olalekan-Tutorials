@@ -13,10 +13,6 @@ webpack(config){
   })
   return config
 }
-  // images: {
-  //   // domains: ['media.giphy.com','drive.google.com'],
-  //   domains: ['drive.google.com']
-  // },
 }
 
 module.exports = nextConfig
