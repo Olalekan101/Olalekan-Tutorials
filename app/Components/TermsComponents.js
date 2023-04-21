@@ -11,7 +11,7 @@ import {ReadTerms} from "../ContextAPI/CheckBoxContext";
 export default function TermsComponent(da) {
 
   const {read,readFunction} = useContext(ReadTerms)
-  const check = read.includes(parseInt(da.id))
+  const check = read.includes(da.id)
 
 
     return (
@@ -26,7 +26,7 @@ export default function TermsComponent(da) {
         <div className="relative w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
       {MotionIcons(da.Terminology,'iconStyle')}  
           </div>
-          <div className="font-bold text-center overflow-x-hidden text-ellipsis text-sm sm:text-base whitespace-nowrap">{da.Terminology}
+          <div className="font-bold text-center overflow-x-hidden text-ellipsis text-sm sm:text-base">{da.Terminology}
           </div>
           <div className="line-clamp-2 text-sm text-center">
             {da.Explanation}

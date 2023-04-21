@@ -13,10 +13,10 @@ html{
 
 @layer components{
   .input{
-    @apply border-0 focus:ring-slate-500 focus:ring-1 bg-slate-200 rounded-md
+    @apply border-0 focus:ring-slate-500 focus:ring-1 bg-slate-600 text-white rounded-md
   } 
   .btnform{
-    @apply bg-slate-100 border-slate-500 place-self-start p-2
+    @apply bg-green-500 text-white border-slate-500 place-self-start p-2 rounded-md
   }
   .bgText{
     @apply text-lightColor bg-[#16213E]

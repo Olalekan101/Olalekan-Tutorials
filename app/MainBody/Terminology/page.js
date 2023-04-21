@@ -56,10 +56,11 @@ export default function Terminology() {
   const {read,readFunction,removeFunction} = useContext(ReadTerms)
 
    if(isLoading){
-     return <Lottie animationData={LoadingPlane}  loop={true} />
+     return <Lottie animationData={LoadingPlane} loop={true} />
    }
     const datxa = data?.docs.map((doc)=>{
       return{
+        ID: doc.id,
         ...doc.data()
       }})
       const dataa = datxa.slice(0,8)

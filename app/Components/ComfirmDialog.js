@@ -1,6 +1,6 @@
 "use client"
 import { Dialog,Transition } from "@headlessui/react"
-import { useRef, useState, useContext, useMemo, Fragment} from "react"
+import { useContext,Fragment} from "react"
 import { ReadTerms } from "../ContextAPI/CheckBoxContext"
 import { useRouter } from "next/navigation"
 

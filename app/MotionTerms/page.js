@@ -57,7 +57,6 @@ export default function MotionTermsPage() {
     const filterTerm = Terms?.filter( (x) => x.Terminology.toLowerCase().includes(deValue.toLowerCase()))
     const ran = useMemo(()=>Math.floor(Math.random() * (Terms?.length - 1 + 1) + 1 ),[Terms])
     const populateID = Terms?.forEach(x=>TermsIDs.push(x.id))
-    console.log(TermsIDs);
     if(isLoading){
       return <Lottie animationData={LoadingPlane} loop={true} />
     }
